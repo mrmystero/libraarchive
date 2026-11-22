@@ -1,5 +1,5 @@
 /* ==========================================================================
-   LibraArchive — Vanilla JS Engine (Icons, Search/Filters, Drive Viewer & Likes)
+   LibraArchive — Directory Index Engine (Search, Filter, Sort, Viewer & KV Likes)
    ========================================================================== */
 
 (function () {
@@ -8,26 +8,21 @@
   const LIKED_STORAGE_KEY = "libraarchive_liked_slugs";
 
   /* ------------------------------------------------------------------------
-     Crisp Inline SVG Study Icons
+     Crisp Solid White File-Explorer SVG Icons
      ------------------------------------------------------------------------ */
   const ICONS = {
-    books: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>`,
-    apple: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z"/><path d="M10 2c1 .5 2 2 2 5"/></svg>`,
-    blackboard: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 16h20"/><path d="M8 20l2-4"/><path d="M16 20l-2-4"/><path d="M7 9h5"/><path d="M7 12h8"/></svg>`,
-    ruler: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2"/><path d="m11.5 9.5 2-2"/><path d="m8.5 6.5 2-2"/><path d="m17.5 15.5 2-2"/></svg>`,
-    pencil: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>`,
-    heart: `<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>`,
-    heartFilled: `<svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>`,
-    external: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>`
+    folder: `<svg width="15" height="15" viewBox="0 0 16 16" fill="#e5e5e5" aria-hidden="true"><path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V5a1.5 1.5 0 0 0-1.5-1.5H7.71l-1.5-1.5H1.5z"/></svg>`,
+    file: `<svg width="15" height="15" viewBox="0 0 16 16" fill="#e5e5e5" aria-hidden="true"><path d="M3 1h6.5L13 4.5V15H3V1zm6 1v3h3L9 2zM5 7v1h6V7H5zm0 2.5v1h6v-1H5zm0 2.5v1h4v-1H5z"/></svg>`,
+    heart: `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>`,
+    heartFilled: `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>`
   };
 
-  function getSubjectIcon(subject) {
-    const key = String(subject || "").toLowerCase();
-    if (key.includes("math") || key.includes("calc") || key.includes("algebra")) return ICONS.ruler;
-    if (key.includes("bio") || key.includes("chem") || key.includes("health")) return ICONS.apple;
-    if (key.includes("phys") || key.includes("comp") || key.includes("science")) return ICONS.blackboard;
-    if (key.includes("hist") || key.includes("gov") || key.includes("econ")) return ICONS.pencil;
-    return ICONS.books;
+  function getEntryIcon(type) {
+    const t = String(type || "").toLowerCase();
+    if (t.includes("guide") || t.includes("toolkit") || t.includes("workbook")) {
+      return ICONS.folder;
+    }
+    return ICONS.file;
   }
 
   function escapeHTML(str) {
@@ -40,7 +35,7 @@
   }
 
   /* ------------------------------------------------------------------------
-     LocalStorage Helpers for Visitor Likes
+     LocalStorage Helpers for Visitor Likes (Unchanged)
      ------------------------------------------------------------------------ */
   function getLikedSlugs() {
     try {
@@ -66,12 +61,12 @@
       }
       localStorage.setItem(LIKED_STORAGE_KEY, JSON.stringify([...current]));
     } catch {
-      // Ignore storage quota or private-mode errors
+      // Ignore storage errors
     }
   }
 
   /* ------------------------------------------------------------------------
-     Cloudflare KV Likes API with Graceful Local Fallback (0 Likes)
+     Cloudflare KV Likes API with Graceful Local Fallback (Unchanged)
      ------------------------------------------------------------------------ */
   async function fetchLikesMap(slugs) {
     const fallback = {};
@@ -144,60 +139,62 @@
   }
 
   /* ------------------------------------------------------------------------
-     Mobile Navigation Toggle
+     Page 1: Full-Width Directory Index (index.html)
      ------------------------------------------------------------------------ */
-  function initNavigation() {
-    const toggle = document.getElementById("nav-toggle");
-    const links = document.getElementById("nav-links");
-    if (!toggle || !links) return;
-
-    toggle.addEventListener("click", () => {
-      const isOpen = links.classList.toggle("open");
-      toggle.setAttribute("aria-expanded", String(isOpen));
-    });
-  }
-
-  /* ------------------------------------------------------------------------
-     Page 1: Home / Browse (index.html)
-     ------------------------------------------------------------------------ */
-  async function initBrowsePage() {
-    const grid = document.getElementById("resource-grid");
-    if (!grid) return;
+  async function initDirectoryIndex() {
+    const tbody = document.getElementById("dir-table-body");
+    if (!tbody) return;
 
     const searchInput = document.getElementById("search-input");
     const gradeSelect = document.getElementById("grade-select");
-    const subjectPillsContainer = document.getElementById("subject-pills");
-    const resultsCount = document.getElementById("results-count");
-    const statTotal = document.getElementById("stat-total-resources");
-    const statSubjects = document.getElementById("stat-total-subjects");
+    const subjectSelect = document.getElementById("subject-select");
+    const breadcrumbSubject = document.getElementById("breadcrumb-subject");
+    const statusCount = document.getElementById("dir-status-count");
+    const sortButtons = document.querySelectorAll(".sort-btn");
 
     let allResources = [];
     let likesMap = {};
     let activeSubject = "All";
     let activeGrade = "All";
     let searchQuery = "";
+    let sortKey = "title"; // "title" | "grade" | "likes"
+    let sortDir = "asc";   // "asc" | "desc"
+
+    // Allow linking directly to a subject directory via ?subject=Mathematics
+    const initialParams = new URLSearchParams(window.location.search);
+    if (initialParams.get("subject")) {
+      activeSubject = initialParams.get("subject");
+    }
 
     try {
       allResources = await loadResources();
-    } catch (err) {
-      grid.innerHTML = `
-        <div class="empty-state">
-          <h3>Unable to load resources.json</h3>
-          <p>If you opened this file directly via <code>file://</code>, serve the folder over HTTP (or deploy to Cloudflare Pages) so the browser can fetch <code>resources.json</code>.</p>
-        </div>`;
+    } catch {
+      tbody.innerHTML = `
+        <tr class="dir-empty-row">
+          <td colspan="6">Unable to load <code>resources.json</code>. Serve via HTTP or Cloudflare Pages.</td>
+        </tr>`;
       return;
     }
 
-    // Update hero stats
-    const uniqueSubjects = [...new Set(allResources.map((r) => r.subject).filter(Boolean))];
+    const uniqueSubjects = [...new Set(allResources.map((r) => r.subject).filter(Boolean))].sort((a, b) =>
+      a.localeCompare(b)
+    );
     const uniqueGrades = [...new Set(allResources.map((r) => r.grade).filter(Boolean))].sort((a, b) =>
       a.localeCompare(b, undefined, { numeric: true })
     );
 
-    if (statTotal) statTotal.textContent = String(allResources.length);
-    if (statSubjects) statSubjects.textContent = String(uniqueSubjects.length);
+    uniqueSubjects.forEach((subj) => {
+      const opt = document.createElement("option");
+      opt.value = subj;
+      opt.textContent = subj;
+      subjectSelect.appendChild(opt);
+    });
+    if (uniqueSubjects.includes(activeSubject)) {
+      subjectSelect.value = activeSubject;
+    } else {
+      activeSubject = "All";
+    }
 
-    // Populate Grade dropdown
     uniqueGrades.forEach((grade) => {
       const opt = document.createElement("option");
       opt.value = grade;
@@ -205,23 +202,33 @@
       gradeSelect.appendChild(opt);
     });
 
-    // Populate Subject pills
-    const pillSubjects = ["All", ...uniqueSubjects];
-    subjectPillsContainer.innerHTML = pillSubjects
-      .map(
-        (subj) => `
-        <button
-          type="button"
-          class="pill-btn ${subj === "All" ? "active" : ""}"
-          data-subject="${escapeHTML(subj)}"
-        >
-          ${subj !== "All" ? getSubjectIcon(subj) : ""}
-          <span>${escapeHTML(subj)}</span>
-        </button>`
-      )
-      .join("");
+    function updateBreadcrumb() {
+      if (!breadcrumbSubject) return;
+      if (activeSubject === "All") {
+        breadcrumbSubject.innerHTML = "";
+      } else {
+        breadcrumbSubject.innerHTML = `
+          <span class="breadcrumb-sep">/</span>
+          <span class="breadcrumb-current">${escapeHTML(activeSubject)}</span>`;
+      }
+    }
 
-    function renderCards() {
+    function updateSortIndicators() {
+      sortButtons.forEach((btn) => {
+        const key = btn.dataset.sort;
+        const indicator = btn.querySelector(".sort-indicator");
+        const isActive = key === sortKey;
+        btn.classList.toggle("active-sort", isActive);
+        if (indicator) {
+          indicator.textContent = isActive ? (sortDir === "asc" ? "↑" : "↓") : "⇅";
+        }
+      });
+    }
+
+    function renderRows() {
+      updateBreadcrumb();
+      updateSortIndicators();
+
       const q = searchQuery.trim().toLowerCase();
       const filtered = allResources.filter((item) => {
         const matchesSubject = activeSubject === "All" || item.subject === activeSubject;
@@ -233,86 +240,121 @@
         return matchesSubject && matchesGrade && matchesQuery;
       });
 
-      resultsCount.textContent = `Showing ${filtered.length} of ${allResources.length} study resource${allResources.length === 1 ? "" : "s"}`;
+      filtered.sort((a, b) => {
+        let cmp = 0;
+        if (sortKey === "likes") {
+          cmp = (likesMap[a.slug] ?? 0) - (likesMap[b.slug] ?? 0);
+        } else if (sortKey === "grade") {
+          cmp = String(a.grade).localeCompare(String(b.grade), undefined, { numeric: true });
+        } else {
+          cmp = String(a.title).localeCompare(String(b.title));
+        }
+        return sortDir === "asc" ? cmp : -cmp;
+      });
+
+      if (statusCount) {
+        statusCount.textContent = `${filtered.length} item${filtered.length === 1 ? "" : "s"} (${allResources.length} total in index)`;
+      }
 
       if (filtered.length === 0) {
-        grid.innerHTML = `
-          <div class="empty-state">
-            <h3>No matching study resources found</h3>
-            <p>Try clearing a filter or searching for a broader topic keyword.</p>
-            <button type="button" class="btn btn-secondary" id="reset-filters-btn">Reset All Filters</button>
-          </div>`;
-        const resetBtn = document.getElementById("reset-filters-btn");
-        if (resetBtn) {
-          resetBtn.addEventListener("click", () => {
+        tbody.innerHTML = `
+          <tr class="dir-empty-row">
+            <td colspan="6">
+              No matching files found in this directory.
+              <a href="#" id="reset-dir-filters">Reset filters</a>
+            </td>
+          </tr>`;
+        const resetLink = document.getElementById("reset-dir-filters");
+        if (resetLink) {
+          resetLink.addEventListener("click", (e) => {
+            e.preventDefault();
             searchQuery = "";
             activeSubject = "All";
             activeGrade = "All";
             searchInput.value = "";
+            subjectSelect.value = "All";
             gradeSelect.value = "All";
-            subjectPillsContainer.querySelectorAll(".pill-btn").forEach((btn) => {
-              btn.classList.toggle("active", btn.dataset.subject === "All");
-            });
-            renderCards();
+            renderRows();
           });
         }
         return;
       }
 
-      grid.innerHTML = filtered
+      tbody.innerHTML = filtered
         .map((item) => {
           const liked = isSlugLiked(item.slug);
           const count = likesMap[item.slug] ?? 0;
+          const driveDirect = `https://drive.google.com/file/d/${encodeURIComponent(item.drive_id)}/view`;
+
           return `
-            <a class="resource-card" href="resource.html?slug=${encodeURIComponent(item.slug)}">
-              <div class="card-top">
-                <span class="subject-badge" data-subject="${escapeHTML(item.subject)}">
-                  ${getSubjectIcon(item.subject)}
-                  <span>${escapeHTML(item.subject)}</span>
-                </span>
-                <span class="grade-tag">${escapeHTML(item.grade)}</span>
-              </div>
-              <h2 class="card-title">${escapeHTML(item.title)}</h2>
-              <p class="card-desc">${escapeHTML(item.description || "")}</p>
-              <div class="card-footer">
-                <div class="card-meta-left">
-                  <span class="card-type">${escapeHTML(item.type)}</span>
-                  <span>By ${escapeHTML(item.author)}</span>
-                </div>
-                <span class="like-pill ${liked ? "is-liked" : ""}" data-like-slug="${escapeHTML(item.slug)}">
+            <tr>
+              <td class="col-name">
+                <a class="file-entry-link" href="resource.html?slug=${encodeURIComponent(item.slug)}">
+                  ${getEntryIcon(item.type)}
+                  <span>${escapeHTML(item.title)}</span>
+                </a>
+                <span class="file-entry-sub">Author: ${escapeHTML(item.author)}${
+                  item.description ? ` &mdash; ${escapeHTML(item.description)}` : ""
+                }</span>
+              </td>
+              <td class="col-meta">${escapeHTML(item.grade)}</td>
+              <td class="col-meta">
+                <a href="index.html?subject=${encodeURIComponent(item.subject)}" data-filter-subject="${escapeHTML(item.subject)}">${escapeHTML(item.subject)}</a>
+              </td>
+              <td class="col-meta">${escapeHTML(item.type)}</td>
+              <td class="col-meta">
+                <span class="like-badge-inline ${liked ? "is-liked" : ""}">
                   ${liked ? ICONS.heartFilled : ICONS.heart}
                   <span>${count}</span>
                 </span>
-              </div>
-            </a>`;
+              </td>
+              <td class="col-meta">
+                <a href="${driveDirect}" target="_blank" rel="noopener noreferrer">Open in Drive</a>
+              </td>
+            </tr>`;
         })
         .join("");
     }
 
-    // Initial render immediately with 0 fallback, then hydrate KV like counts
-    renderCards();
+    renderRows();
     likesMap = await fetchLikesMap(allResources.map((r) => r.slug));
-    renderCards();
+    renderRows();
 
-    // Event listeners
     searchInput.addEventListener("input", (e) => {
       searchQuery = e.target.value;
-      renderCards();
+      renderRows();
     });
 
     gradeSelect.addEventListener("change", (e) => {
       activeGrade = e.target.value;
-      renderCards();
+      renderRows();
     });
 
-    subjectPillsContainer.addEventListener("click", (e) => {
-      const btn = e.target.closest(".pill-btn");
-      if (!btn) return;
-      activeSubject = btn.dataset.subject;
-      subjectPillsContainer.querySelectorAll(".pill-btn").forEach((el) => {
-        el.classList.toggle("active", el === btn);
+    subjectSelect.addEventListener("change", (e) => {
+      activeSubject = e.target.value;
+      renderRows();
+    });
+
+    tbody.addEventListener("click", (e) => {
+      const subjLink = e.target.closest("[data-filter-subject]");
+      if (!subjLink) return;
+      e.preventDefault();
+      activeSubject = subjLink.dataset.filterSubject;
+      subjectSelect.value = activeSubject;
+      renderRows();
+    });
+
+    sortButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const clickedKey = btn.dataset.sort;
+        if (sortKey === clickedKey) {
+          sortDir = sortDir === "asc" ? "desc" : "asc";
+        } else {
+          sortKey = clickedKey;
+          sortDir = clickedKey === "likes" ? "desc" : "asc";
+        }
+        renderRows();
       });
-      renderCards();
     });
   }
 
@@ -323,15 +365,14 @@
     const container = document.getElementById("viewer-container");
     if (!container) return;
 
+    const breadcrumbDynamic = document.getElementById("viewer-breadcrumb-dynamic");
     const params = new URLSearchParams(window.location.search);
     const slug = params.get("slug");
 
     if (!slug) {
       container.innerHTML = `
-        <div class="empty-state">
-          <h3>No resource specified</h3>
-          <p>Select a study guide or set of notes from the archive to view it here.</p>
-          <a class="btn btn-primary" href="index.html">Browse Resources</a>
+        <div class="dir-section">
+          <p>No file slug specified. <a href="index.html">Return to /Browse</a>.</p>
         </div>`;
       return;
     }
@@ -341,9 +382,8 @@
       resources = await loadResources();
     } catch {
       container.innerHTML = `
-        <div class="empty-state">
-          <h3>Unable to load resources.json</h3>
-          <p>Please serve this site over HTTP or deploy to Cloudflare Pages to load resource metadata.</p>
+        <div class="dir-section">
+          <p>Unable to load <code>resources.json</code>.</p>
         </div>`;
       return;
     }
@@ -351,15 +391,21 @@
     const resource = resources.find((r) => r.slug === slug);
     if (!resource) {
       container.innerHTML = `
-        <div class="empty-state">
-          <h3>Resource not found</h3>
-          <p>We couldn't find a study resource matching "<code>${escapeHTML(slug)}</code>".</p>
-          <a class="btn btn-primary" href="index.html">Return to Library</a>
+        <div class="dir-section">
+          <p>404: File <code>${escapeHTML(slug)}</code> not found in index. <a href="index.html">Return to /Browse</a>.</p>
         </div>`;
       return;
     }
 
     document.title = `${resource.title} — LibraArchive`;
+
+    if (breadcrumbDynamic) {
+      breadcrumbDynamic.innerHTML = `
+        <span class="breadcrumb-sep">/</span>
+        <a href="index.html?subject=${encodeURIComponent(resource.subject)}">${escapeHTML(resource.subject)}</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="breadcrumb-current">${escapeHTML(resource.title)}</span>`;
+    }
 
     const driveId = encodeURIComponent(resource.drive_id);
     const previewUrl = `https://drive.google.com/file/d/${driveId}/preview`;
@@ -370,45 +416,31 @@
     let liked = isSlugLiked(resource.slug);
 
     container.innerHTML = `
-      <div class="viewer-header-card">
-        <div class="viewer-badges">
-          <span class="subject-badge" data-subject="${escapeHTML(resource.subject)}">
-            ${getSubjectIcon(resource.subject)}
-            <span>${escapeHTML(resource.subject)}</span>
-          </span>
-          <span class="grade-tag">${escapeHTML(resource.grade)}</span>
-          <span class="grade-tag">${escapeHTML(resource.type)}</span>
+      <div class="viewer-meta-strip">
+        <div class="viewer-meta-info">
+          <span>${ICONS.file} <strong>${escapeHTML(resource.title)}</strong></span>
+          <span>Grade: <strong>${escapeHTML(resource.grade)}</strong></span>
+          <span>Subject: <strong>${escapeHTML(resource.subject)}</strong></span>
+          <span>Type: <strong>${escapeHTML(resource.type)}</strong></span>
+          <span>Author: <strong>${escapeHTML(resource.author)}</strong></span>
         </div>
-        <h1>${escapeHTML(resource.title)}</h1>
-        <p class="viewer-byline">Contributed by <strong>${escapeHTML(resource.author)}</strong>${
-          resource.description ? ` &mdash; ${escapeHTML(resource.description)}` : ""
-        }</p>
-        <div class="viewer-actions">
-          <button type="button" id="like-toggle-btn" class="like-btn ${liked ? "liked" : ""}" aria-pressed="${liked}">
+        <div class="viewer-meta-actions">
+          <button type="button" id="like-toggle-btn" class="btn-flat ${liked ? "liked" : ""}" aria-pressed="${liked}">
             <span id="like-btn-icon">${liked ? ICONS.heartFilled : ICONS.heart}</span>
-            <span id="like-btn-label">${liked ? "Liked" : "Helpful"}</span>
+            <span id="like-btn-label">${liked ? "Liked" : "Like"}</span>
             <span>(<span id="like-btn-count">${currentLikes}</span>)</span>
           </button>
-          <a class="btn btn-secondary" href="${directUrl}" target="_blank" rel="noopener noreferrer">
-            ${ICONS.external}
-            <span>Open in Google Drive</span>
-          </a>
+          <a class="btn-flat" href="${directUrl}" target="_blank" rel="noopener noreferrer">Open in Google Drive ↗</a>
         </div>
       </div>
 
-      <div class="drive-frame-wrapper">
-        <div class="drive-frame-bar">
-          <span>Document Preview &bull; Google Drive Viewer</span>
-          <span>Trouble loading? Use "Open in Google Drive" above</span>
-        </div>
-        <iframe
-          class="drive-iframe"
-          src="${previewUrl}"
-          title="${escapeHTML(resource.title)}"
-          allow="autoplay"
-          loading="lazy"
-        ></iframe>
-      </div>`;
+      <iframe
+        class="drive-iframe-full"
+        src="${previewUrl}"
+        title="${escapeHTML(resource.title)}"
+        allow="autoplay"
+        loading="lazy"
+      ></iframe>`;
 
     const likeBtn = document.getElementById("like-toggle-btn");
     const likeIcon = document.getElementById("like-btn-icon");
@@ -424,7 +456,7 @@
       likeBtn.classList.toggle("liked", liked);
       likeBtn.setAttribute("aria-pressed", String(liked));
       likeIcon.innerHTML = liked ? ICONS.heartFilled : ICONS.heart;
-      likeLabel.textContent = liked ? "Liked" : "Helpful";
+      likeLabel.textContent = liked ? "Liked" : "Like";
       likeCountEl.textContent = String(currentLikes);
       likeBtn.disabled = false;
     });
@@ -449,8 +481,7 @@
      Bootstrap
      ------------------------------------------------------------------------ */
   document.addEventListener("DOMContentLoaded", () => {
-    initNavigation();
-    initBrowsePage();
+    initDirectoryIndex();
     initResourceViewer();
     initContributeFormEmbed();
   });
