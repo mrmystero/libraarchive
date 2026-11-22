@@ -397,7 +397,7 @@
       return;
     }
 
-    document.title = `${resource.title} — LibraArchive`;
+    document.title = `${resource.title} — LibreArchive`;
 
     if (breadcrumbDynamic) {
       breadcrumbDynamic.innerHTML = `
