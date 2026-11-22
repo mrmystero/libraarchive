@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — LibraArchive</title>
+  <meta name="description" content="Learn why LibraArchive was created and how we keep study resources free and open for every student." />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-badge" aria-hidden="true">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+          </svg>
+        </span>
+        <span>LibraArchive</span>
+      </a>
+
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M3 6h18M3 12h18M3 18h18"/>
+        </svg>
+      </button>
+
+      <nav class="nav-links" id="nav-links" aria-label="Primary">
+        <a href="index.html">Browse</a>
+        <a href="contribute.html">Submit / Request</a>
+        <a href="about.html" aria-current="page">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-banner">
+      <div class="container">
+        <div class="page-banner-card">
+          <h1>About LibraArchive</h1>
+          <p>
+            A quiet, fast, and open study library built to make high-quality student notes accessible without paywalls or clutter.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container about-stack">
+      <!-- EDITABLE SECTION 1: Creator's Story -->
+      <article class="paper-card">
+        <h2>The Creator&rsquo;s Story</h2>
+        <p>
+          LibraArchive started with a simple frustration: every time exams rolled around, the clearest study guides were either buried in private group chats or locked behind subscription paywalls asking students to pay just to view a single review sheet.
+        </p>
+        <p>
+          What began as a personal folder of organized math and science notes grew into a public shelf where any student can find, read, and bookmark helpful summaries in seconds.
+        </p>
+      </article>
+
+      <!-- EDITABLE SECTION 2: Why Free & Open -->
+      <article class="paper-card">
+        <h2>Why LibraArchive Is Free &amp; Open to Everyone</h2>
+        <p>
+          Good study explanations shouldn&rsquo;t depend on a credit card. LibraArchive is built with lightweight static web technology so pages load instantaneously—even on older school Chromebooks or slow Wi-Fi connections.
+        </p>
+        <p>
+          There are no user accounts to create, no tracking cookies, and no upload quotas. Every guide is hosted openly and indexed in one transparent catalog so students can spend their energy learning instead of clicking through pop-ups.
+        </p>
+      </article>
+
+      <!-- EDITABLE SECTION 3: Frequently Asked Questions -->
+      <article class="paper-card">
+        <h2>Frequently Asked Questions</h2>
+
+        <details class="faq-item" open>
+          <summary>Do I need an account to read or download study guides?</summary>
+          <p>
+            No. Every resource on LibraArchive can be read right in your browser or opened directly in Google Drive without signing in.
+          </p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How are submitted resources reviewed before appearing on the site?</summary>
+          <p>
+            Each submission is checked to confirm that the Google Drive link is publicly viewable, the subject and grade tags are accurate, and the material is original student-created study work.
+          </p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What if the embedded Google Drive preview doesn&rsquo;t load on my school network?</summary>
+          <p>
+            Some school filters restrict third-party iframe embeds. Every resource page includes an <strong>"Open in Google Drive"</strong> button right next to the title so you can view or print the file directly.
+          </p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How do I add a new resource if I am maintaining this site?</summary>
+          <p>
+            Simply add a new JSON object with <code>slug</code>, <code>title</code>, <code>grade</code>, <code>subject</code>, <code>type</code>, <code>author</code>, and <code>drive_id</code> to <code>resources.json</code> and push to GitHub. Cloudflare Pages updates the live site automatically.
+          </p>
+        </details>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <span class="footer-brand">LibraArchive</span> &mdash; Free, open learning notes for students everywhere.
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Browse</a>
+        <a href="contribute.html">Submit / Request</a>
+        <a href="about.html">About &amp; FAQ</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
