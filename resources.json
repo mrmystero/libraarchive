@@ -1,52 +1,32 @@
 [
   {
-    "slug": "ap-calculus-ab-derivatives-cheat-sheet",
-    "title": "AP Calculus AB: Complete Derivatives & Applications Guide",
-    "grade": "Grade 12",
-    "subject": "Mathematics",
-    "type": "Study Guide",
-    "author": "Maya Lin",
-    "drive_id": "1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs",
-    "description": "Covers limit definitions, product/quotient/chain rules, implicit differentiation, and related rates with worked examples."
-  },
-  {
-    "slug": "grade-10-cell-biology-mitosis-notes",
-    "title": "Cell Structure, Organelles & Mitosis Illustrated Notes",
-    "grade": "Grade 10",
-    "subject": "Biology",
-    "type": "Lecture Notes",
-    "author": "Devon Brooks",
-    "drive_id": "19u5d8x4k2LpQ9wRzT7vNmC3jH6yF1aBc",
-    "description": "Visual breakdown of eukaryotic organelles, membrane transport, and every phase of the cell cycle."
-  },
-  {
-    "slug": "world-history-industrial-revolution-timeline",
-    "title": "The Industrial Revolution: Causes, Inventions & Global Impact",
-    "grade": "Grade 11",
-    "subject": "History",
-    "type": "Summary Sheet",
-    "author": "Priya Nair",
-    "drive_id": "1kL9pQ2mN8vX4zR7wT5cY3jH6bF0dE2gA",
-    "description": "Chronological overview from early British textile mills to urbanization, labor reforms, and global trade shifts."
-  },
-  {
-    "slug": "grade-9-algebra-linear-equations-workbook",
-    "title": "Foundations of Linear Equations & Graphing Practice Set",
+    "slug": "mcgrawhill-ryerson-grade-9-principles-of-mathematics",
+    "title": "McGraw-Hill Ryerson: Principles of Mathematics 9",
     "grade": "Grade 9",
     "subject": "Mathematics",
-    "type": "Practice Worksheet",
-    "author": "Lucas Alvarez",
-    "drive_id": "1mN4bV7cX9zL2kJ5hG8fD3sA6pQ1wE4rT",
-    "description": "Step-by-step practice problems on slope-intercept form, point-slope form, parallel lines, and answer keys."
+    "type": "Textbook",
+    "author": "McGraw-Hill Ryerson",
+    "drive_id": "1Uv5kj29JxsyUFIO8z295QorP7cxofb7M",
+    "description": "Grade 9 Principles of Mathematics textbook covering linear relations, analytic geometry, measurement, and algebra."
   },
   {
-    "slug": "ib-english-literary-analysis-essay-toolkit",
-    "title": "Literary Devices, Tone & Thesis Building Toolkit",
-    "grade": "Grade 12",
-    "subject": "English",
-    "type": "Reference Guide",
-    "author": "Hannah Cho",
-    "drive_id": "1pQ8wE2rT5yU9iO3aS6dF4gH7jK1lZ9xC",
-    "description": "Structured frameworks for close-reading passages, integrating textual evidence, and writing strong analytical claims."
+    "slug": "mcgrawhill-ryerson-grade-10-principles-of-mathematics",
+    "title": "McGraw-Hill Ryerson: Principles of Mathematics 10",
+    "grade": "Grade 10",
+    "subject": "Mathematics",
+    "type": "Textbook",
+    "author": "McGraw-Hill Ryerson",
+    "drive_id": "1Q42EXFEq9WDU5rcVmooNCkQPb1K0uPLv",
+    "description": "Grade 10 Principles of Mathematics textbook covering linear systems, quadratic relations, and trigonometry."
+  },
+  {
+    "slug": "nelson-grade-9-principles-of-mathematics",
+    "title": "Nelson: Principles of Mathematics 9",
+    "grade": "Grade 9",
+    "subject": "Mathematics",
+    "type": "Textbook",
+    "author": "Nelson Education",
+    "drive_id": "1gg1PkiJnfZ5kkxXPdW1mROqNFGVjlEch",
+    "description": "Nelson Grade 9 Principles of Mathematics textbook with worked examples, chapter reviews, and practice exercises."
   }
 ]
