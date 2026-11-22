@@ -1,8 +1,4 @@
-/* ==========================================================================
-   LibraArchive — Dark-Mode Open-Directory / File Explorer Stylesheet
-   Zero rounded corners, zero drop shadows, zero cards.
-   ========================================================================== */
-
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 :root {
   --bg-main: #191919;
   --bg-bar: #1e1e1e;
@@ -18,8 +14,8 @@
   --link-blue: #4ea1ff;
   --link-blue-hover: #7bb8ff;
   --accent-liked: #ff6b6b;
-
-  --font-ui: "Segoe UI", "Inter", system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  --font-ui: "JetBrains Mono", monospace;
+  /*--font-ui: "Segoe UI", "Inter", system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;*/
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 }
 
