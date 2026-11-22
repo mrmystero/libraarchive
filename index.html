@@ -3,156 +3,99 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LibraArchive — Free Student Study Guides &amp; Class Notes</title>
-  <meta name="description" content="Open, fast, and free study guides, lecture notes, and practice worksheets shared by students for everyone." />
+  <title>LibraArchive — /Browse</title>
+  <meta name="description" content="Open-directory index of free student study guides, lecture notes, and worksheets." />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="container nav-inner">
-      <a class="brand" href="index.html">
-        <span class="brand-badge" aria-hidden="true">
-          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
-            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
-          </svg>
-        </span>
-        <span>LibraArchive</span>
-      </a>
-
-      <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <path d="M3 6h18M3 12h18M3 18h18"/>
-        </svg>
-      </button>
-
-      <nav class="nav-links" id="nav-links" aria-label="Primary">
-        <a href="index.html" aria-current="page">Browse</a>
-        <a href="contribute.html">Submit / Request</a>
-        <a href="about.html">About</a>
-      </nav>
+  <header class="dir-topbar">
+    <div class="dir-topbar-left">
+      <a class="dir-brand" href="index.html">LibraArchive</a>
+      <span class="dir-mission">// Open index of free student study guides &amp; class notes &mdash; zero paywalls, zero logins.</span>
     </div>
+    <nav class="dir-topbar-links" aria-label="Primary">
+      <a href="index.html" aria-current="page">[ Browse ]</a>
+      <a href="contribute.html">[ Submit / Request ]</a>
+      <a href="about.html">[ About ]</a>
+    </nav>
   </header>
 
+  <div class="dir-breadcrumb-bar">
+    <nav class="breadcrumb-trail" aria-label="Breadcrumb">
+      <a href="index.html" title="Home">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="#ffffff" aria-hidden="true">
+          <path d="M8 1.2 1 7h2v7h3.5v-4h3v4H13V7h2L8 1.2z"/>
+        </svg>
+        <span>Browse</span>
+      </a>
+      <span id="breadcrumb-subject"></span>
+    </nav>
+
+    <div class="dir-controls">
+      <input
+        type="search"
+        id="search-input"
+        class="dir-input"
+        placeholder="Filter files by keyword..."
+        aria-label="Filter files by keyword"
+      />
+      <select id="subject-select" class="dir-select" aria-label="Filter by Subject">
+        <option value="All">Subject: All</option>
+      </select>
+      <select id="grade-select" class="dir-select" aria-label="Filter by Grade">
+        <option value="All">Grade: All</option>
+      </select>
+    </div>
+  </div>
+
   <main>
-    <section class="hero-section">
-      <div class="container">
-        <div class="chalkboard-hero">
-          <div class="hero-grid">
-            <div>
-              <div class="hero-eyebrow">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z"/>
-                  <path d="M10 2c1 .5 2 2 2 5"/>
-                </svg>
-                <span>Open Academic Shelf &bull; Zero Paywalls</span>
-              </div>
-              <h1>Clear notes and study guides, free for every student.</h1>
-              <p>
-                LibraArchive is a community-built digital library of class notes, formula sheets, and exam prep guides. No logins, no ads—just open a resource and start studying.
-              </p>
-              <div class="hero-actions">
-                <a class="btn btn-amber" href="#browse-controls">Explore the Shelf</a>
-                <a class="btn btn-chalk-outline" href="contribute.html">Share Your Notes</a>
-              </div>
-            </div>
-
-            <div class="hero-toolkit-card" aria-label="Study Subjects Overview">
-              <div class="toolkit-label">Study Shelf Toolkit</div>
-              <div class="toolkit-icons">
-                <div class="toolkit-item">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z"/>
-                    <path d="M10 2c1 .5 2 2 2 5"/>
-                  </svg>
-                  <span>Biology</span>
-                </div>
-                <div class="toolkit-item">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <rect x="3" y="4" width="18" height="12" rx="2"/>
-                    <path d="M2 16h20M8 20l2-4M16 20l-2-4M7 9h5M7 12h8"/>
-                  </svg>
-                  <span>Science</span>
-                </div>
-                <div class="toolkit-item">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
-                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
-                  </svg>
-                  <span>English</span>
-                </div>
-                <div class="toolkit-item">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"/>
-                    <path d="m14.5 12.5 2-2m-5-1 2-2m-5-1 2-2m7 11 2-2"/>
-                  </svg>
-                  <span>Math</span>
-                </div>
-                <div class="toolkit-item">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
-                    <path d="m15 5 4 4"/>
-                  </svg>
-                  <span>History</span>
-                </div>
-              </div>
-              <div class="hero-stats">
-                <span><strong id="stat-total-resources">5</strong> Study Guides</span>
-                <span><strong id="stat-total-subjects">4</strong> Subjects</span>
-                <span><strong>100%</strong> Free</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="container" id="browse-controls" aria-label="Browse Study Resources">
-      <div class="controls-panel">
-        <div class="search-row">
-          <div class="search-field">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="11" cy="11" r="8"/>
-              <path d="m21 21-4.3-4.3"/>
-            </svg>
-            <input
-              type="search"
-              id="search-input"
-              class="search-input"
-              placeholder="Search by topic, title, author, or keyword..."
-              aria-label="Search study resources"
-            />
-          </div>
-
-          <select id="grade-select" class="grade-select" aria-label="Filter by Grade">
-            <option value="All">All Grades</option>
-          </select>
-        </div>
-
-        <div class="filter-pills-row" role="group" aria-label="Filter by Subject">
-          <span class="filter-label">Subject:</span>
-          <div id="subject-pills" class="filter-pills-row"></div>
-        </div>
-      </div>
-
-      <div class="results-meta">
-        <span id="results-count">Loading study resources...</span>
-      </div>
-
-      <div id="resource-grid" class="resource-grid"></div>
-    </section>
+    <div class="dir-table-wrap">
+      <table class="dir-table">
+        <thead>
+          <tr>
+            <th class="col-name">
+              <button type="button" class="sort-btn active-sort" data-sort="title">
+                <span>Name</span>
+                <span class="sort-indicator">↑</span>
+              </button>
+            </th>
+            <th class="col-meta">
+              <button type="button" class="sort-btn" data-sort="grade">
+                <span>Grade</span>
+                <span class="sort-indicator">⇅</span>
+              </button>
+            </th>
+            <th class="col-meta">Subject</th>
+            <th class="col-meta">Type</th>
+            <th class="col-meta">
+              <button type="button" class="sort-btn" data-sort="likes">
+                <span>Likes</span>
+                <span class="sort-indicator">⇅</span>
+              </button>
+            </th>
+            <th class="col-meta">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="dir-table-body">
+          <tr class="dir-empty-row">
+            <td colspan="6">Loading directory index...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div>
-        <span class="footer-brand">LibraArchive</span> &mdash; Free, open learning notes for students everywhere.
-      </div>
-      <div class="footer-links">
-        <a href="index.html">Browse</a>
-        <a href="contribute.html">Submit / Request</a>
-        <a href="about.html">About &amp; FAQ</a>
-      </div>
+  <div class="dir-status-bar">
+    <span id="dir-status-count">0 items</span>
+    <span>Click column headers to sort &bull; Select a file to preview</span>
+  </div>
+
+  <footer class="dir-footer">
+    <span>LibraArchive Static Index &mdash; Powered by Cloudflare Pages &amp; KV</span>
+    <div>
+      <a href="index.html">Browse</a> &middot;
+      <a href="contribute.html">Submit / Request</a> &middot;
+      <a href="about.html">About</a>
     </div>
   </footer>
 
