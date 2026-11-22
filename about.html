@@ -8,112 +8,81 @@
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="container nav-inner">
-      <a class="brand" href="index.html">
-        <span class="brand-badge" aria-hidden="true">
-          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
-            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
-          </svg>
-        </span>
-        <span>LibraArchive</span>
-      </a>
-
-      <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <path d="M3 6h18M3 12h18M3 18h18"/>
-        </svg>
-      </button>
-
-      <nav class="nav-links" id="nav-links" aria-label="Primary">
-        <a href="index.html">Browse</a>
-        <a href="contribute.html">Submit / Request</a>
-        <a href="about.html" aria-current="page">About</a>
-      </nav>
+  <header class="dir-topbar">
+    <div class="dir-topbar-left">
+      <a class="dir-brand" href="index.html">LibraArchive</a>
+      <span class="dir-mission">// Open index of free student study guides &amp; class notes &mdash; zero paywalls, zero logins.</span>
     </div>
+    <nav class="dir-topbar-links" aria-label="Primary">
+      <a href="index.html">[ Browse ]</a>
+      <a href="contribute.html">[ Submit / Request ]</a>
+      <a href="about.html" aria-current="page">[ About ]</a>
+    </nav>
   </header>
 
-  <main>
-    <section class="page-banner">
-      <div class="container">
-        <div class="page-banner-card">
-          <h1>About LibraArchive</h1>
-          <p>
-            A quiet, fast, and open study library built to make high-quality student notes accessible without paywalls or clutter.
-          </p>
-        </div>
-      </div>
+  <div class="dir-breadcrumb-bar">
+    <nav class="breadcrumb-trail" aria-label="Breadcrumb">
+      <a href="index.html" title="Home">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="#ffffff" aria-hidden="true">
+          <path d="M8 1.2 1 7h2v7h3.5v-4h3v4H13V7h2L8 1.2z"/>
+        </svg>
+        <span>Browse</span>
+      </a>
+      <span class="breadcrumb-sep">/</span>
+      <span class="breadcrumb-current">README-About.md</span>
+    </nav>
+  </div>
+
+  <main class="dir-content-wrap">
+    <!-- EDITABLE SECTION 1: Creator's Story -->
+    <section class="dir-section">
+      <h1>The Creator&rsquo;s Story</h1>
+      <p>
+        LibraArchive started with a straightforward goal: stop locking basic study guides behind paywalls, blurred previews, and mandatory account sign-ups.
+      </p>
+      <p>
+        What began as a personal folder of organized math and science notes grew into a public open-directory index where any student can locate and read helpful summaries in seconds.
+      </p>
     </section>
 
-    <section class="container about-stack">
-      <!-- EDITABLE SECTION 1: Creator's Story -->
-      <article class="paper-card">
-        <h2>The Creator&rsquo;s Story</h2>
-        <p>
-          LibraArchive started with a simple frustration: every time exams rolled around, the clearest study guides were either buried in private group chats or locked behind subscription paywalls asking students to pay just to view a single review sheet.
-        </p>
-        <p>
-          What began as a personal folder of organized math and science notes grew into a public shelf where any student can find, read, and bookmark helpful summaries in seconds.
-        </p>
-      </article>
+    <!-- EDITABLE SECTION 2: Why Free & Open -->
+    <section class="dir-section">
+      <h1>Why LibraArchive Is Free &amp; Open to Everyone</h1>
+      <p>
+        Built as pure static HTML, CSS, and vanilla JavaScript with zero frameworks or trackers, every page loads instantly even on restricted school Chromebooks or slow connections.
+      </p>
+      <p>
+        All metadata lives transparently in <code>resources.json</code>, and documents stream directly via Google Drive so students can read, print, or save copies without friction.
+      </p>
+    </section>
 
-      <!-- EDITABLE SECTION 2: Why Free & Open -->
-      <article class="paper-card">
-        <h2>Why LibraArchive Is Free &amp; Open to Everyone</h2>
-        <p>
-          Good study explanations shouldn&rsquo;t depend on a credit card. LibraArchive is built with lightweight static web technology so pages load instantaneously—even on older school Chromebooks or slow Wi-Fi connections.
-        </p>
-        <p>
-          There are no user accounts to create, no tracking cookies, and no upload quotas. Every guide is hosted openly and indexed in one transparent catalog so students can spend their energy learning instead of clicking through pop-ups.
-        </p>
-      </article>
+    <!-- EDITABLE SECTION 3: FAQ -->
+    <section class="dir-section">
+      <h2>FAQ</h2>
 
-      <!-- EDITABLE SECTION 3: Frequently Asked Questions -->
-      <article class="paper-card">
-        <h2>Frequently Asked Questions</h2>
+      <details class="faq-row" open>
+        <summary>Do I need an account to view or download files?</summary>
+        <p>No. Every resource can be viewed in the embedded reader or opened directly in Google Drive without signing in.</p>
+      </details>
 
-        <details class="faq-item" open>
-          <summary>Do I need an account to read or download study guides?</summary>
-          <p>
-            No. Every resource on LibraArchive can be read right in your browser or opened directly in Google Drive without signing in.
-          </p>
-        </details>
+      <details class="faq-row">
+        <summary>What if the embedded preview is blocked on my school Wi-Fi?</summary>
+        <p>Use the <strong>Open in Google Drive</strong> action link in the table row or top viewer bar to open the file directly in a new tab.</p>
+      </details>
 
-        <details class="faq-item">
-          <summary>How are submitted resources reviewed before appearing on the site?</summary>
-          <p>
-            Each submission is checked to confirm that the Google Drive link is publicly viewable, the subject and grade tags are accurate, and the material is original student-created study work.
-          </p>
-        </details>
-
-        <details class="faq-item">
-          <summary>What if the embedded Google Drive preview doesn&rsquo;t load on my school network?</summary>
-          <p>
-            Some school filters restrict third-party iframe embeds. Every resource page includes an <strong>"Open in Google Drive"</strong> button right next to the title so you can view or print the file directly.
-          </p>
-        </details>
-
-        <details class="faq-item">
-          <summary>How do I add a new resource if I am maintaining this site?</summary>
-          <p>
-            Simply add a new JSON object with <code>slug</code>, <code>title</code>, <code>grade</code>, <code>subject</code>, <code>type</code>, <code>author</code>, and <code>drive_id</code> to <code>resources.json</code> and push to GitHub. Cloudflare Pages updates the live site automatically.
-          </p>
-        </details>
-      </article>
+      <details class="faq-row">
+        <summary>How are new files added to the directory?</summary>
+        <p>Site maintainers append a new entry with <code>slug</code>, <code>title</code>, <code>grade</code>, <code>subject</code>, <code>type</code>, <code>author</code>, and <code>drive_id</code> to <code>resources.json</code> and push to GitHub.</p>
+      </details>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div>
-        <span class="footer-brand">LibraArchive</span> &mdash; Free, open learning notes for students everywhere.
-      </div>
-      <div class="footer-links">
-        <a href="index.html">Browse</a>
-        <a href="contribute.html">Submit / Request</a>
-        <a href="about.html">About &amp; FAQ</a>
-      </div>
+  <footer class="dir-footer">
+    <span>LibraArchive Static Index &mdash; Powered by Cloudflare Pages &amp; KV</span>
+    <div>
+      <a href="index.html">Browse</a> &middot;
+      <a href="contribute.html">Submit / Request</a> &middot;
+      <a href="about.html">About</a>
     </div>
   </footer>
 
