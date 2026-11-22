@@ -29,4 +29,76 @@
     "drive_id": "1gg1PkiJnfZ5kkxXPdW1mROqNFGVjlEch",
     "description": "Nelson Grade 9 Principles of Mathematics textbook with worked examples, chapter reviews, and practice exercises."
   }
+  {
+    "slug": "nelson-grade-11-functions",
+    "title": "Nelson: Functions 11",
+    "grade": "Grade 11",
+    "subject": "Mathematics",
+    "type": "Textbook",
+    "author": "Nelson Education",
+    "drive_id": "1c9RjbxuGqTgPugJZO0lfD_WUOEc4FRfX",
+    "description": "Nelson Grade 11 Functions textbook covering quadratic, exponential, discrete, and trigonometric functions."
+  },
+  {
+    "slug": "nelson-grade-12-advanced-functions",
+    "title": "Nelson: Advanced Functions 12",
+    "grade": "Grade 12",
+    "subject": "Mathematics",
+    "type": "Textbook",
+    "author": "Nelson Education",
+    "drive_id": "1U0baEA0u67nojdRLXY6_cFDkB2uiITcW",
+    "description": "Nelson Grade 12 Advanced Functions textbook covering polynomial, rational, logarithmic, and trigonometric functions."
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ]
