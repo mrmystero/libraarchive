@@ -361,6 +361,9 @@
   /* ------------------------------------------------------------------------
      Page 2: Resource Viewer (resource.html?slug=...)
      ------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------
+     Page 2: Resource Viewer (resource.html?slug=...)
+     ------------------------------------------------------------------------ */
   async function initResourceViewer() {
     const container = document.getElementById("viewer-container");
     if (!container) return;
@@ -397,7 +400,7 @@
       return;
     }
 
-    document.title = `${resource.title} — LibreArchive`;
+    document.title = `${resource.title} — LibraArchive`;
 
     if (breadcrumbDynamic) {
       breadcrumbDynamic.innerHTML = `
@@ -416,7 +419,10 @@
     let currentLikes = likesMap[resource.slug] ?? 0;
     let liked = isSlugLiked(resource.slug);
 
-    const isTooLarge = Boolean(resource.too_large);
+    const isTooLarge =
+      resource.too_large === true ||
+      resource.too_large === "true" ||
+      resource.slug === "nelson-grade-10-science-perspectives";
 
     container.innerHTML = `
       <div class="viewer-meta-strip">
@@ -440,12 +446,21 @@
 
       ${
         isTooLarge
-          ? `<div class="large-file-backdrop" id="large-file-modal" role="dialog" aria-modal="true" aria-labelledby="large-file-title">
-              <div class="large-file-modal">
-                <h2 id="large-file-title">File Too Large for In-Browser Preview</h2>
-                <p>Sorry, this file is too large to view on this website. Please download it to view it.</p>
-                <div class="large-file-actions">
-                  <a class="btn-flat btn-blue" href="${downloadUrl}" target="_blank" rel="noopener noreferrer">Download File &darr;</a>
+          ? `<div class="dir-section">
+              <p>Sorry, this file is too large to view on this website. Please download it to view it.</p>
+            </div>
+            <div
+              id="large-file-modal"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="large-file-title"
+              style="position:fixed;inset:0;background:rgba(0,0,0,0.82);display:flex;align-items:center;justify-content:center;padding:16px;z-index:9999;"
+            >
+              <div style="width:100%;max-width:460px;background:#1e1e1e;border:1px solid #3a3a3a;padding:20px;color:#e5e5e5;">
+                <h2 id="large-file-title" style="margin:0 0 8px;font-size:16px;color:#ffffff;">File Too Large to Preview</h2>
+                <p style="margin:0 0 16px;color:#a3a3a3;">Sorry, file is too large to view on this website. Please download to view it.</p>
+                <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                  <a class="btn-flat" href="${downloadUrl}" target="_blank" rel="noopener noreferrer" style="background:#4ea1ff;border-color:#4ea1ff;color:#111111;font-weight:700;">Download File &darr;</a>
                   <a class="btn-flat" href="${directUrl}" target="_blank" rel="noopener noreferrer">Open in Google Drive ↗</a>
                   <a class="btn-flat" href="index.html">&larr; Back to Directory</a>
                 </div>
