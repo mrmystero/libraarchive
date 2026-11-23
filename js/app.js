@@ -410,10 +410,13 @@
     const driveId = encodeURIComponent(resource.drive_id);
     const previewUrl = `https://drive.google.com/file/d/${driveId}/preview`;
     const directUrl = `https://drive.google.com/file/d/${driveId}/view`;
+    const downloadUrl = `https://drive.google.com/uc?export=download&id=${driveId}`;
 
     const likesMap = await fetchLikesMap([resource.slug]);
     let currentLikes = likesMap[resource.slug] ?? 0;
     let liked = isSlugLiked(resource.slug);
+
+    const isTooLarge = Boolean(resource.too_large);
 
     container.innerHTML = `
       <div class="viewer-meta-strip">
@@ -430,17 +433,32 @@
             <span id="like-btn-label">${liked ? "Liked" : "Like"}</span>
             <span>(<span id="like-btn-count">${currentLikes}</span>)</span>
           </button>
+          <a class="btn-flat" href="${downloadUrl}" target="_blank" rel="noopener noreferrer">Download PDF &darr;</a>
           <a class="btn-flat" href="${directUrl}" target="_blank" rel="noopener noreferrer">Open in Google Drive ↗</a>
         </div>
       </div>
 
-      <iframe
-        class="drive-iframe-full"
-        src="${previewUrl}"
-        title="${escapeHTML(resource.title)}"
-        allow="autoplay"
-        loading="lazy"
-      ></iframe>`;
+      ${
+        isTooLarge
+          ? `<div class="large-file-backdrop" id="large-file-modal" role="dialog" aria-modal="true" aria-labelledby="large-file-title">
+              <div class="large-file-modal">
+                <h2 id="large-file-title">File Too Large for In-Browser Preview</h2>
+                <p>Sorry, this file is too large to view on this website. Please download it to view it.</p>
+                <div class="large-file-actions">
+                  <a class="btn-flat btn-blue" href="${downloadUrl}" target="_blank" rel="noopener noreferrer">Download File &darr;</a>
+                  <a class="btn-flat" href="${directUrl}" target="_blank" rel="noopener noreferrer">Open in Google Drive ↗</a>
+                  <a class="btn-flat" href="index.html">&larr; Back to Directory</a>
+                </div>
+              </div>
+            </div>`
+          : `<iframe
+              class="drive-iframe-full"
+              src="${previewUrl}"
+              title="${escapeHTML(resource.title)}"
+              allow="autoplay"
+              loading="lazy"
+            ></iframe>`
+      }`;
 
     const likeBtn = document.getElementById("like-toggle-btn");
     const likeIcon = document.getElementById("like-btn-icon");
