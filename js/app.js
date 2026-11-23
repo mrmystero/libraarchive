@@ -413,10 +413,10 @@
     const driveId = encodeURIComponent(resource.drive_id);
     const previewUrl = `https://drive.google.com/file/d/${driveId}/preview`;
     const directUrl = `https://drive.google.com/file/d/${driveId}/view`;
-    const downloadUrl = `https://drive.google.com/uc?export=download&id=${driveId}`;
+    // Bypasses Google Drive's large-file virus-scan warning page for direct download
+    const downloadUrl = `https://drive.usercontent.google.com/download?id=${driveId}&export=download&confirm=t`;
 
-    const likesMap = await fetchLikesMap([resource.slug]);
-    let currentLikes = likesMap[resource.slug] ?? 0;
+    let currentLikes = isSlugLiked(resource.slug) ? 1 : 0;
     let liked = isSlugLiked(resource.slug);
 
     const isTooLarge =
@@ -424,6 +424,7 @@
       resource.too_large === "true" ||
       resource.slug === "nelson-grade-10-science-perspectives";
 
+    // Render UI and popup immediately without waiting on /api/likes
     container.innerHTML = `
       <div class="viewer-meta-strip">
         <div class="viewer-meta-info">
@@ -446,21 +447,22 @@
 
       ${
         isTooLarge
-          ? `<div class="dir-section">
-              <p>Sorry, this file is too large to view on this website. Please download it to view it.</p>
+          ? `<div class="dir-section" id="large-file-fallback">
+              <p><strong>File Too Large to Preview:</strong> Google Drive cannot render an inline preview for files over 100 MB.</p>
+              <p>
+                <a class="btn-flat btn-blue" href="${downloadUrl}" target="_blank" rel="noopener noreferrer">Download PDF &darr;</a>
+                <a class="btn-flat" href="${directUrl}" target="_blank" rel="noopener noreferrer">Open in Google Drive ↗</a>
+              </p>
             </div>
-            <div
-              id="large-file-modal"
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby="large-file-title"
-              style="position:fixed;inset:0;background:rgba(0,0,0,0.82);display:flex;align-items:center;justify-content:center;padding:16px;z-index:9999;"
-            >
-              <div style="width:100%;max-width:460px;background:#1e1e1e;border:1px solid #3a3a3a;padding:20px;color:#e5e5e5;">
-                <h2 id="large-file-title" style="margin:0 0 8px;font-size:16px;color:#ffffff;">File Too Large to Preview</h2>
-                <p style="margin:0 0 16px;color:#a3a3a3;">Sorry, file is too large to view on this website. Please download to view it.</p>
-                <div style="display:flex;flex-wrap:wrap;gap:8px;">
-                  <a class="btn-flat" href="${downloadUrl}" target="_blank" rel="noopener noreferrer" style="background:#4ea1ff;border-color:#4ea1ff;color:#111111;font-weight:700;">Download File &darr;</a>
+            <div id="large-file-modal" class="large-file-backdrop" role="dialog" aria-modal="true" aria-labelledby="large-file-title">
+              <div class="large-file-modal">
+                <div class="large-file-header">
+                  <h2 id="large-file-title">File Too Large to Preview</h2>
+                  <button type="button" id="close-large-modal" class="btn-flat" aria-label="Close popup">&times;</button>
+                </div>
+                <p>Google Drive does not support inline previews for files larger than 100 MB. Please download the PDF or open it directly in Drive.</p>
+                <div class="large-file-actions">
+                  <a class="btn-flat btn-blue" href="${downloadUrl}" target="_blank" rel="noopener noreferrer">Download PDF &darr;</a>
                   <a class="btn-flat" href="${directUrl}" target="_blank" rel="noopener noreferrer">Open in Google Drive ↗</a>
                   <a class="btn-flat" href="index.html">&larr; Back to Directory</a>
                 </div>
@@ -475,6 +477,27 @@
             ></iframe>`
       }`;
 
+    // Wire up modal close (X button, backdrop click, or Escape key)
+    const modal = document.getElementById("large-file-modal");
+    const closeModalBtn = document.getElementById("close-large-modal");
+    if (modal) {
+      const closeModal = () => modal.remove();
+      if (closeModalBtn) closeModalBtn.addEventListener("click", closeModal);
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+      });
+      document.addEventListener(
+        "keydown",
+        (e) => {
+          if (e.key === "Escape" && document.getElementById("large-file-modal")) {
+            closeModal();
+          }
+        },
+        { once: true }
+      );
+    }
+
+    // Wire up Like button
     const likeBtn = document.getElementById("like-toggle-btn");
     const likeIcon = document.getElementById("like-btn-icon");
     const likeLabel = document.getElementById("like-btn-label");
@@ -493,6 +516,11 @@
       likeCountEl.textContent = String(currentLikes);
       likeBtn.disabled = false;
     });
+
+    // Hydrate KV like count asynchronously after rendering
+    const likesMap = await fetchLikesMap([resource.slug]);
+    currentLikes = likesMap[resource.slug] ?? currentLikes;
+    likeCountEl.textContent = String(currentLikes);
   }
 
   /* ------------------------------------------------------------------------
