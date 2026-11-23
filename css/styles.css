@@ -557,24 +557,32 @@ select:focus {
 .large-file-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.78);
+  background: rgba(0, 0, 0, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 16px;
-  z-index: 100;
+  z-index: 9999;
 }
 
 .large-file-modal {
   width: 100%;
-  max-width: 460px;
+  max-width: 480px;
   background: var(--bg-bar);
   border: 1px solid var(--border-strong);
   padding: 20px;
 }
 
-.large-file-modal h2 {
-  margin: 0 0 8px;
+.large-file-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.large-file-header h2 {
+  margin: 0;
   font-size: 16px;
   color: #ffffff;
 }
