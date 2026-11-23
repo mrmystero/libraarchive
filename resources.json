@@ -59,4 +59,14 @@
     "drive_id": "1p9mIteQa6rTRyikN-WrMsrdxIItfJzgD",
     "description": "Nelson Grade 9 Science Textbook covering biology, chemistry, and electricity."
   }
+  {
+    "slug": "nelson-grade-10-science-perspectives",
+    "title": "Nelson: Science Perspectives 10",
+    "grade": "Grade 10",
+    "subject": "Science",
+    "type": "Textbook",
+    "author": "Nelson Education",
+    "drive_id": "1JK8M8bI_6OLmALYmuoe749_1SZXuGcQV",
+    "description": "Nelson Grade 10 Science Perspectives textbook covering tissues and systems, chemical reactions, climate change, and optics."
+  }
 ]
