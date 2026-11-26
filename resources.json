@@ -90,5 +90,26 @@
     "drive_id": "1ZsusIEQLzmK0ldtNH9AdhSx07TRf_is4",
     "too_large": true,
     "description": "Nelson Grade 12 Biology textbook covering biochemistry, metabolic processes, molecular genetics, homeostasis, and population dynamics."
+  },
+  {
+    "slug": "nelson-grade-12-chemistry",
+    "title": "Nelson: Chemistry 12",
+    "grade": "Grade 12",
+    "subject": "Chemistry",
+    "type": "Textbook",
+    "author": "Nelson Education",
+    "drive_id": "1RxrlK-skCpTlAIrmVuYZ7tf-BvaxE-R0",
+    "too_large": true,
+    "description": "Nelson Grade 12 Chemistry textbook covering organic chemistry, structure and properties of matter, energy changes and rates of reaction, chemical systems and equilibrium, and electrochemistry."
+  },
+  {
+    "slug": "nelson-grade-11-chemistry",
+    "title": "Nelson: Chemistry 11",
+    "grade": "Grade 11",
+    "subject": "Chemistry",
+    "type": "Textbook",
+    "author": "Nelson Education",
+    "drive_id": "1XtvxHOa7HJwSQD5CcBSTZHYF1GjAmbk-",
+    "description": "Nelson Grade 11 Chemistry textbook covering matter, chemical trends, chemical bonding, chemical reactions, quantities in chemical reactions, solutions, and gases."
   }
 ]
