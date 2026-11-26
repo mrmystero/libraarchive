@@ -79,5 +79,16 @@
     "author": "Nelson Education",
     "drive_id": "1zXNPEmXAI4qQ_h8YsBM8sClffLefc3oz",
     "description": "Grade 11 Biology textbook covering diversity of living things, evolution, genetic processes, animals, and plants."
+  },
+  {
+    "slug": "nelson-grade-12-biology",
+    "title": "Nelson: Biology 12",
+    "grade": "Grade 12",
+    "subject": "Biology",
+    "type": "Textbook",
+    "author": "Nelson Education",
+    "drive_id": "1ZsusIEQLzmK0ldtNH9AdhSx07TRf_is4",
+    "too_large": true,
+    "description": "Nelson Grade 12 Biology textbook covering biochemistry, metabolic processes, molecular genetics, homeostasis, and population dynamics."
   }
 ]
