@@ -538,12 +538,50 @@
     }
   }
 
-  /* ------------------------------------------------------------------------
+/* ------------------------------------------------------------------------
+     Global Visitor Counter (Reuses LIKES_KV via /api/views)
+     ------------------------------------------------------------------------ */
+  async function initVisitorCounter() {
+    const counterEl = document.getElementById("visitor-counter");
+    if (!counterEl) return;
+
+    if (window.location.protocol === "file:") {
+      counterEl.textContent = "1 (local)";
+      return;
+    }
+
+    const SESSION_KEY = "libraarchive_visit_counted";
+    const alreadyCounted = sessionStorage.getItem(SESSION_KEY) === "1";
+
+    try {
+      const res = await fetch("/api/views", {
+        method: alreadyCounted ? "GET" : "POST",
+        headers: { Accept: "application/json" }
+      });
+
+      if (!res.ok) return;
+      const data = await res.json();
+      const count = Number(data.views);
+
+      if (Number.isFinite(count)) {
+        counterEl.textContent = count.toLocaleString();
+        if (!alreadyCounted) {
+          sessionStorage.setItem(SESSION_KEY, "1");
+        }
+      }
+    } catch {
+      // Leave as "--" if offline
+    }
+  }
+  /*
+
+ ------------------------------------------------------------------------
      Bootstrap
      ------------------------------------------------------------------------ */
   document.addEventListener("DOMContentLoaded", () => {
     initDirectoryIndex();
     initResourceViewer();
     initContributeFormEmbed();
+    initVisitorCounter();
   });
 })();
