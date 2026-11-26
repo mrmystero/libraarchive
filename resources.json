@@ -131,5 +131,15 @@
     "author": "Nelson Education",
     "drive_id": "13SMcFgXpylW2F7FuwEgrBG4MclijI6am",
     "description": "Nelson Grade 12 Physics textbook covering dynamics, energy and momentum, gravitational, electric, and magnetic fields, the wave nature of light, and quantum mechanics."
+  },
+  {
+    "slug": "nelson-grade-10-principles-of-mathematics",
+    "title": "Nelson: Principles of Mathematics 10",
+    "grade": "Grade 10",
+    "subject": "Mathematics",
+    "type": "Textbook",
+    "author": "Nelson Education",
+    "drive_id": "1gg1PkiJnfZ5kkxXPdW1mROqNFGVjlEch",
+    "description": "Nelson Grade 10 Principles of Mathematics textbook covering linear systems, analytic geometry, quadratic relations, and trigonometry."
   }
 ]
