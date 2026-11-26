@@ -111,5 +111,25 @@
     "author": "Nelson Education",
     "drive_id": "1XtvxHOa7HJwSQD5CcBSTZHYF1GjAmbk-",
     "description": "Nelson Grade 11 Chemistry textbook covering matter, chemical trends, chemical bonding, chemical reactions, quantities in chemical reactions, solutions, and gases."
+  },
+  {
+    "slug": "nelson-grade-11-physics",
+    "title": "Nelson: Physics 11",
+    "grade": "Grade 11",
+    "subject": "Physics",
+    "type": "Textbook",
+    "author": "Nelson Education",
+    "drive_id": "1OOZAzr7GABZp-0cb5FR8bu1Lj3KyYNVN",
+    "description": "Nelson Grade 11 Physics textbook covering kinematics, forces, energy and society, waves and sound, and electricity and magnetism."
+  },
+  {
+    "slug": "nelson-grade-12-physics",
+    "title": "Nelson: Physics 12",
+    "grade": "Grade 12",
+    "subject": "Physics",
+    "type": "Textbook",
+    "author": "Nelson Education",
+    "drive_id": "13SMcFgXpylW2F7FuwEgrBG4MclijI6am",
+    "description": "Nelson Grade 12 Physics textbook covering dynamics, energy and momentum, gravitational, electric, and magnetic fields, the wave nature of light, and quantum mechanics."
   }
 ]
